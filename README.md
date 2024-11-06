@@ -34,3 +34,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+Description:
+To enable real-time metrics reporting for payment data, we need an aggregation table that calculates and stores key metrics (e.g., total number of payments, total payment amount) at defined intervals. Instead of an ETL job, this aggregation table will pull data directly from the Glue table (data in S3) using Amazon Athena or Redshift Spectrum. The table will allow the frontend UI to display metrics up-to-date without significant data movement or transformation processes.
+
+Acceptance Criteria:
+An aggregation table is created and populated by querying Glue tables using Athena or Redshift Spectrum.
+Glue table schema is set up correctly, reflecting the required payment data structure.
+Metrics (e.g., total payments, total payment amount) are calculated directly from the Glue table and updated every 15 minutes.
+API endpoint provides access to the latest metrics for display in the frontend UI.
